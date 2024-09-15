@@ -1,5 +1,7 @@
 # Arquitetura de Containers na AWS
 
-|Module                                                                                                          | Description        |
-|---------------------------------------------------------------------------------------------------------------------------|---------------------------------|
-| [VPC](./modules/vpc/README.md)              | Networking
+
+| Modules | Days | Descrição |
+| -------- | ----- | ----------- |
+| [vpc](./modules/vpc/README.md)        | [01-vpc](./days/01-vpc/README.md)     | Networking     |
+|         |      |             |
