@@ -1,7 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-
-
-# Curso de Arquitetura de Containers na AWS - VPC
+# VPC
 
 ## Comandos
 
@@ -26,13 +24,13 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region | `string` | `"us-east-1"` | no |
-| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Common tags | `map(string)` | <pre>{<br>  "created_by": "terraform-linuxtips-aws-container-architecture",<br>  "day": "day1",<br>  "sandbox": "linuxtips"<br>}</pre> | no |
-| <a name="input_databases_subnet_cidr"></a> [databases\_subnet\_cidr](#input\_databases\_subnet\_cidr) | The databases subnet CIDR | `list(string)` | <pre>[<br>  "10.0.51.0/24",<br>  "10.0.52.0/24",<br>  "10.0.53.0/24"<br>]</pre> | no |
-| <a name="input_private_subnet_cidr"></a> [private\_subnet\_cidr](#input\_private\_subnet\_cidr) | The private subnet CIDR | `list(string)` | <pre>[<br>  "10.0.0.0/20",<br>  "10.0.16.0/20",<br>  "10.0.32.0/20"<br>]</pre> | no |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region | `string` | n/a | yes |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Common tags | `map(string)` | <pre>{<br>  "created_by": "aws-container-architecture"<br>}</pre> | no |
+| <a name="input_databases_subnet_cidr"></a> [databases\_subnet\_cidr](#input\_databases\_subnet\_cidr) | The databases subnet CIDR | `list(string)` | n/a | yes |
+| <a name="input_private_subnet_cidr"></a> [private\_subnet\_cidr](#input\_private\_subnet\_cidr) | The private subnet CIDR | `list(string)` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The resource name sufix | `string` | `"linuxtips"` | no |
-| <a name="input_public_subnet_cidr"></a> [public\_subnet\_cidr](#input\_public\_subnet\_cidr) | The public subnet CIDR | `list(string)` | <pre>[<br>  "10.0.48.0/24",<br>  "10.0.49.0/24",<br>  "10.0.50.0/24"<br>]</pre> | no |
-| <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | The VPC CIDR | `string` | `"10.0.0.0/16"` | no |
+| <a name="input_public_subnet_cidr"></a> [public\_subnet\_cidr](#input\_public\_subnet\_cidr) | The public subnet CIDR | `list(string)` | n/a | yes |
+| <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | The VPC CIDR | `string` | n/a | yes |
 #### Outputs
 
 | Name | Description |
