@@ -1,10 +1,6 @@
-data "http" "my_public_ip" {
-  url = "http://ifconfig.me"
-}
-
 module "ecs_ec2" {
-  ##source = "git::https://https://github.com/adilsonmenechini/arquitetura-de-containers-aws.git//modules/ecs-ec2"
-  source = "../../modules/ecs-ec2"
+  ##source = "git::https://https://github.com/adilsonmenechini/arquitetura-de-containers-aws.git//modules/ecs/ecs_ec2"
+  source = "../../modules/ecs/ecs_ec2"
 
   common_tags              = var.common_tags
   aws_region               = var.aws_region

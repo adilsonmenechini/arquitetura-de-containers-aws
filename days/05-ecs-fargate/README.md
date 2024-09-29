@@ -1,0 +1,49 @@
+<!-- BEGIN_TF_DOCS -->
+# ECS Application using Fargate
+
+## Comandos
+
+```bash
+ ------------------------------------
+ Terraform
+ ------------------------------------
+
+ make init - Terraform init
+ make plan - Terraform plan
+ make apply - Terraform apply
+ make destroy - Terraform destroy
+ make tfdocs - Gerar documentação do Terraform
+ make tflint -  tflint
+ make clean - remover variáveis de ambiente
+ ```
+#### Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5.39.0 |
+| <a name="provider_docker"></a> [docker](#provider\_docker) | ~> 3.0.2 |
+| <a name="provider_http"></a> [http](#provider\_http) | ~> 3.4.1 |
+#### Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_alb_ingress_cidr_enabled"></a> [alb\_ingress\_cidr\_enabled](#input\_alb\_ingress\_cidr\_enabled) | A list of CIDR enabled to access the ALB | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region where resources will be deployed. | `string` | n/a | yes |
+| <a name="input_capacity_providers"></a> [capacity\_providers](#input\_capacity\_providers) | A list of capacity providers used by ECS with Fargate | `list(string)` | <pre>[<br>  "FARGATE",<br>  "FARGATE_SPOT"<br>]</pre> | no |
+| <a name="input_cloudwatch_scale"></a> [cloudwatch\_scale](#input\_cloudwatch\_scale) | Parameters for CloudWatch scaling metrics. | <pre>object({<br>    out_statistic           = string<br>    out_cpu_threshold       = number<br>    out_adjustment          = number<br>    out_comparison_operator = string<br>    out_period              = number<br>    out_evaluation_periods  = number<br>    in_statistic            = string<br>    in_cpu_threshold        = number<br>    in_adjustment           = number<br>    in_comparison_operator  = string<br>    in_period               = number<br>    in_evaluation_periods   = number<br>  })</pre> | n/a | yes |
+| <a name="input_common_scale"></a> [common\_scale](#input\_common\_scale) | Parameters for scaling the ECS service. | <pre>object({<br>    scale_type   = string<br>    task_maximum = number<br>    task_minimum = number<br>    task_desired = number<br>    in_cooldown  = number<br>    out_cooldown = number<br>  })</pre> | n/a | yes |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Common tags to be applied to resources for identification and organization. | `map(string)` | n/a | yes |
+| <a name="input_ecs_service"></a> [ecs\_service](#input\_ecs\_service) | Configuration settings for the ECS service. | <pre>object({<br>    name                  = string<br>    port                  = number<br>    cpu                   = number<br>    memory_mb             = number<br>    ecs_name              = string<br>    environment_variables  = list(object({<br>      name  = string<br>      value = string<br>    }))<br>    capabilities          = list(string)<br>    service_healthcheck   = map(any)<br>    service_launch_type   = string<br>    service_hosts         = list(string)<br>  })</pre> | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Suffix used in resource names to identify the project. | `string` | n/a | yes |
+| <a name="input_ssm_alb_arn"></a> [ssm\_alb\_arn](#input\_ssm\_alb\_arn) | The ARN of the ALB stored in the AWS Systems Manager Parameter Store. | `string` | n/a | yes |
+| <a name="input_ssm_alb_listener_arn"></a> [ssm\_alb\_listener\_arn](#input\_ssm\_alb\_listener\_arn) | The ARN of the ALB listener stored in AWS Systems Manager Parameter Store. | `string` | n/a | yes |
+| <a name="input_ssm_private_subnet_list"></a> [ssm\_private\_subnet\_list](#input\_ssm\_private\_subnet\_list) | A list of private subnet IDs stored in the AWS Systems Manager Parameter Store. | `list(string)` | n/a | yes |
+| <a name="input_ssm_vpc_id"></a> [ssm\_vpc\_id](#input\_ssm\_vpc\_id) | The VPC ID stored in the AWS Systems Manager Parameter Store. | `string` | n/a | yes |
+| <a name="input_tracking_scale_cpu"></a> [tracking\_scale\_cpu](#input\_tracking\_scale\_cpu) | CPU percentage used for tracking scale metrics. | `number` | n/a | yes |
+| <a name="input_tracking_scale_requests"></a> [tracking\_scale\_requests](#input\_tracking\_scale\_requests) | Number of requests used for tracking scale metrics. | `number` | n/a | yes |
+#### Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_ecs_alb"></a> [ecs\_alb](#output\_ecs\_alb) | The ECS ALB dns name |
+<!-- END_TF_DOCS --> 

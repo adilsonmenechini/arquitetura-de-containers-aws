@@ -20,7 +20,7 @@ validate:
 	
 ## make tfsec -  tfsec 
 tfsec:
-	@docker run --rm --volume "$$(pwd):/tfsec" -u $$(id -u) aquasec/tfsec:latest .
+	@docker run --rm --volume "$$(pwd):/tfsec" -u $$(id -u) aquasec/tfsec:latest -m CRITICAL -m HIGH  -p
 
 ## make plan - Terraform plan
 plan:validate
@@ -36,8 +36,12 @@ destroy:validate
 
 ## make tfdocs - Gerar documentação do Terraform
 tfdocs:
-	@docker run --rm --volume "$$(pwd):/terraform-docs" -u $$(id -u) quay.io/terraform-docs/terraform-docs:0.18.0 markdown /terraform-docs > docs/tfdoc.md
-	
+	@docker run --rm --volume "$$(pwd):/terraform-docs" -u $$(id -u) quay.io/terraform-docs/terraform-docs:0.18.0 markdown /terraform-docs
+
+## make tflint -  tflint
+tflint:
+	@docker run --rm --volume "$$(pwd):/tfsec" -u $$(id -u) ghcr.io/terraform-linters/tflint:latest
+		
 ## make clean - remover variáveis de ambiente
 clean:
 	@rm -rf terraform.* .terraform.* .terraform* plan *-config

@@ -1,22 +1,34 @@
 variable "aws_region" {
   type        = string
-  description = "The AWS region"
+  description = "The AWS region where resources will be deployed."
   default     = "us-east-1"
+}
+
+variable "environment" {
+  type        = string
+  description = "The deployment environment (e.g., dev, staging, prod)."
+  default     = "dev"
+}
+
+variable "day_name" {
+  type        = string
+  description = "Identifier for the project or task, typically representing the project day."
+  default     = "day1"
 }
 
 variable "common_tags" {
   type        = map(string)
-  description = "Common tags"
+  description = "Common tags applied to resources for better organization and management."
 }
 
 variable "project_name" {
   type        = string
-  description = "The resource name sufix"
+  description = "Suffix used in resource names to identify the project."
 }
 
 variable "alb_ingress_cidr_enabled" {
   type        = list(string)
-  description = "A list of CIDR enabled to access the ALB"
+  description = "List of CIDR blocks allowed to access the Application Load Balancer (ALB)."
 }
 
 variable "ecs" {
@@ -37,5 +49,5 @@ variable "ecs" {
       max_price    = string
     })
   })
-  description = "ECS sizing"
+  description = "Configuration for ECS node sizing, including AMI, instance types, and scaling settings."
 }

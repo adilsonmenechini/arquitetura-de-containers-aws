@@ -1,6 +1,6 @@
-# VPC
+# ECS application and autoscaling
 
-## Comandos
+## Comandos 
 
 ```bash
  ------------------------------------
@@ -12,5 +12,7 @@
  make apply - Terraform apply
  make destroy - Terraform destroy
  make tfdocs - Gerar documentação do Terraform
+ make tflint -  tflint
  make clean - remover variáveis de ambiente
  ```
+ 
